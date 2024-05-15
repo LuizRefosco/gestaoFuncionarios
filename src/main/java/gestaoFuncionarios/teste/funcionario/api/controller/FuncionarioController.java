@@ -1,6 +1,7 @@
 package gestaoFuncionarios.teste.funcionario.api.controller;
 
 import gestaoFuncionarios.teste.funcionario.api.FuncionarioAPI;
+import gestaoFuncionarios.teste.funcionario.api.request.FuncionarioAlteracaoRequest;
 import gestaoFuncionarios.teste.funcionario.api.request.FuncionarioRequest;
 import gestaoFuncionarios.teste.funcionario.api.response.FuncionarioDetalhadoResponse;
 import gestaoFuncionarios.teste.funcionario.api.response.FuncionarioResponse;
@@ -34,5 +35,23 @@ public class FuncionarioController implements FuncionarioAPI {
         Funcionario funcionario = funcionarioService.buscaFuncionarioPorId(id);
         log.info("[finaliza] FuncionarioController - getFuncionarioPorId");
         return new FuncionarioDetalhadoResponse(funcionario);
+    }
+
+    @Override
+    public void patchAlteraFuncionario(UUID idFuncionario, FuncionarioAlteracaoRequest funcionarioAlteracaoRequest) {
+        log.info("[inicia] FuncionarioController - patchAlteraFuncionario");
+        log.info("[ID_FUNCIONARIO] {}", idFuncionario);
+        funcionarioService.alteraFuncionario(idFuncionario, funcionarioAlteracaoRequest);
+        log.info("[finaliza] FuncionarioController - patchAlteraFuncionario");
+
+    }
+
+    @Override
+    public void deletaFuncionario(UUID idFuncionario) {
+        log.info("[inicia] FuncionarioController - deletaFuncionario");
+        log.info("[ID_FUNCIONARIO] {}", idFuncionario);
+        funcionarioService.deletaFuncionario(idFuncionario);
+        log.info("[deleta] FuncionarioController - deletaFuncionario");
+
     }
 }

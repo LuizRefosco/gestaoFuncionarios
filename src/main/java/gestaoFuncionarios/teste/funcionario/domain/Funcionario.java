@@ -1,5 +1,6 @@
 package gestaoFuncionarios.teste.funcionario.domain;
 
+import gestaoFuncionarios.teste.funcionario.api.request.FuncionarioAlteracaoRequest;
 import gestaoFuncionarios.teste.funcionario.api.request.FuncionarioRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -36,5 +37,13 @@ public class Funcionario {
         this.salario = funcionarioRequest.getSalario();
         this.numeroTelefone = funcionarioRequest.getNumeroTelefone();
         this.endereco = funcionarioRequest.getEndereco();
+    }
+
+    public void altera(FuncionarioAlteracaoRequest funcionarioAlteracaoRequest) {
+        this.nome = funcionarioAlteracaoRequest.getNome();
+        this.designacao = funcionarioAlteracaoRequest.getDesignacao();
+        this.salario = funcionarioAlteracaoRequest.getSalario();
+        this.numeroTelefone = funcionarioAlteracaoRequest.getNumeroTelefone();
+        this.endereco = funcionarioAlteracaoRequest.getEndereco();
     }
 }
